@@ -10,7 +10,9 @@ const ProgramMenu = () => {
         {menuItems.map((item, index) => (
             <div
                 key={index}
-                className={`${selectedIndex === index ? 'bg-amber-50 text-amber-950' : ''}`} onClick={() => setSelectedIndex(index)} >
+                className={`${selectedIndex === index 
+                    ? 'selected bg-amber-50 text-amber-950' : ''}`} 
+                onClick={() => setSelectedIndex(index)} >
                     {item}
                     </div>
         ))}

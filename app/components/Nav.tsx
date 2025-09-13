@@ -25,7 +25,7 @@ export default function Nav() {
 
   return (
     // <div className={header ? " fixed w-[100%] top-0 border-0" : ""} >
-    <div className=" w-full flex bg-neutral-900">
+    <div className=" w-full flex pl-5 bg-neutral-900">
         <motion.div
           initial={{ opacity: 0, y: -25}}
           animate={{ opacity: 1, y: 0 }}
