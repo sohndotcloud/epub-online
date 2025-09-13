@@ -24,7 +24,7 @@ export default function Nav() {
 
 
   return (
-    <div className={header ? " fixed w-[100%] top-0 border-0" : ""} >
+    // <div className={header ? " fixed w-[100%] top-0 border-0" : ""} >
     <div className=" w-full flex bg-neutral-900">
         <motion.div
           initial={{ opacity: 0, y: -25}}
@@ -55,6 +55,6 @@ export default function Nav() {
       <MenuButton />
     </div>
 
-    </div>
+    // </div>
   );
 }
