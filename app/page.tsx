@@ -6,11 +6,12 @@ export default function Home() {
   return (
      <div>
      <Nav />
-     <div className="body mt-10">
+     <div className="body mt-4">
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1.5 }}
-          className="border text-amber-50 mx-10 h-500">
+          className="border text-amber-50 mx-10 h-500 mb-10">
+
         </motion.div>
      </div>
      </div>

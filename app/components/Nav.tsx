@@ -24,13 +24,13 @@ export default function Nav() {
 
 
   return (
-    <div className={header ? " fixed w-[100%] top-0 " : "bg-transparent"} >
-    <div className="h-18 w-full flex bg-neutral-900">
+    <div className={header ? " fixed w-[100%] top-0 border-0" : ""} >
+    <div className=" w-full flex bg-neutral-900">
         <motion.div
           initial={{ opacity: 0, y: -25}}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="mt-2 w-full pl-15 text-center md:pl-10 w-50 font-mono font-extrabold text-l p-5 text-[20px] mt-2 lg:text-[24px] w-80 text-amber-300"><Link href="/">Nils Sohn <motion.div animate={{ rotate: -15 }}
+          className="mt-2 w-full text-center md:pl-0 font-mono font-extrabold pt-5 text-l text-[20px] lg:text-[24px] w-80 text-amber-300"><Link href="/">Nils Sohn <motion.div animate={{ rotate: -15 }}
             transition={{ duration: .5 }}>
           <motion.div animate={{ rotate: 30 }}
             transition={{ delay: .5, duration: .5 }}>
