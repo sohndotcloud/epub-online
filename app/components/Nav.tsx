@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from "react";
 import {motion} from "framer-motion"
 
-export default function Nav() {
+export default function Nav({wave}) {
     const [header,setHeader] = useState(false);
 
     const scrollHeader = () => {
@@ -36,7 +36,7 @@ export default function Nav() {
             transition={{ delay: .5, duration: .5 }}>
               <motion.div animate={{ opacity: 0 }}
             transition={{ delay: 1, duration: .6 }}>
-              👋</motion.div></motion.div></motion.div>
+              { wave == "no" ? "" : "👋" }</motion.div></motion.div></motion.div>
               </Link></motion.div>
       <ul className="hidden md:flex w-200 pl-14 pr-14 mt-3 justify-between p-5 lg:justify-center item-center w-full mt-3 text-amber-300">
         <motion.li initial={{ opacity: 0, x: +25}}
@@ -44,7 +44,7 @@ export default function Nav() {
           transition={{ duration: 1 }}><Link className="hover:text-amber-700" href="/">Home</Link></motion.li>
         <motion.li initial={{ opacity: 0, x: +25}}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}><Link className="hover:text-amber-700" href="/">About</Link></motion.li>
+          transition={{ duration: 1 }}><Link className="hover:text-amber-700" href="/about">About</Link></motion.li>
           <motion.li initial={{ opacity: 0, x: +25}}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}><Link className="hover:text-amber-700" href="/">Portfolio</Link></motion.li>
