@@ -1,4 +1,4 @@
-import React, {useState, KeyboardEvent} from 'react'
+import React, {useState, KeyboardEvent, MouseEvent} from 'react'
 
 const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
 const downloaded = [0, 0, 0]
@@ -22,7 +22,7 @@ const Market = ({selectTheme}: MarketProps) => {
         }
     }
 
-    const handleDoublePress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
+    const handleDoublePress = (event: KeyboardEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>, index: number) => {
         downloaded[index] = 1;
         handleSelectTheme(-1);
     }
