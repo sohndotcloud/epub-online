@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from "react";
 import {motion} from "framer-motion"
 
-export default function Nav({wave}) {
+export default function Nav({wave, themePack}) {
     const [header,setHeader] = useState(false);
 
     const scrollHeader = () => {
@@ -22,10 +22,11 @@ export default function Nav({wave}) {
       }
     }, [])
 
+    console.log("Theme pack: " + themePack.font);
 
   return (
     // <div className={header ? " fixed w-[100%] top-0 border-0" : ""} >
-    <div className=" w-full flex pl-5 bg-neutral-900">
+    <div className={"w-full flex pl-5 " + themePack.background}>
         <motion.div
           initial={{ opacity: 0, y: -25}}
           animate={{ opacity: 1, y: 0 }}

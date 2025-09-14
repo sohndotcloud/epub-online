@@ -4,7 +4,7 @@ import Nav from "../components/Nav"
 const AboutPage = () => {
   return (
     <div>
-      <Nav wave={"no"} />
+      <Nav wave={"no"} themePack={{}}/>
     </div>
   )
 }

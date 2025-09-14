@@ -1,21 +1,34 @@
 import React, {useState} from 'react'
+import Market from './Market';
 
-const ProgramMenu = () => {
+const ProgramMenu = ({ selectTheme }) => {
 
-    const menuItems = [ "Bubble Theme", "Tail Theme", "Portfolio Theme", "Contact Theme"];
+    const menuItems = ["Bubble Theme", "Secondary Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [marketOpen, setMarketOpen] = useState(false);
+
+    const handleSelectTheme = (index: number) => {
+        setSelectedIndex(index);
+        selectTheme(menuItems[index]);
+    }
 
     return (
     <div id="menu" className="pl-5">
-        {menuItems.map((item, index) => (
+        {!marketOpen &&
+        menuItems.map((item, index) => (
             <div
                 key={index}
                 className={`${selectedIndex === index 
                     ? 'selected bg-amber-50 text-amber-950' : ''}`} 
-                onClick={() => setSelectedIndex(index)} >
+                onClick={() => handleSelectTheme(index)} >
                     {item}
                     </div>
         ))}
+        { !marketOpen &&
+            (<div>
+            <button onClick={() => setMarketOpen(true)}>{"Add Themes +"}</button>
+            </div>)}
+            { marketOpen && <Market selectTheme={selectTheme} />}
     </div>
     )
 }
