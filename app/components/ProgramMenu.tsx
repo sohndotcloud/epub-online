@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 import Market from './Market';
 
-const ProgramMenu = ({ selectTheme }) => {
+interface ProgramMenuProps {
+    selectTheme: (data: string) => void;
+}
+
+const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
 
     const menuItems = ["Bubble Theme", "Secondary Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);

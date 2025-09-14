@@ -10,8 +10,8 @@ interface ThemePack {
 }
 
 export default function Home() {
-  let [ theme, selectTheme ] = useState("");
-  let [ themePack, setThemePack ] = useState<ThemePack>({font: "serif", background: "bg-neutral-900"});
+  const [ theme, selectTheme ] = useState("");
+  const [ themePack, setThemePack ] = useState<ThemePack>({font: "serif", background: "bg-neutral-900"});
   
   const handleSelectTheme = (data: string) => {
     selectTheme(data);

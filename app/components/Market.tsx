@@ -1,18 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, KeyboardEvent} from 'react'
 
 const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
 const downloaded = [0, 0, 0]
 
-const Market = ({selectTheme}) => {
-        const [selectedIndex, setSelectedIndex] = useState(0);
-    let prevIndex = 0;
+interface MarketProps {
+  selectTheme: (theme: string) => void; // or whatever type it should be
+}
+
+const Market = ({selectTheme}: MarketProps) => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
     
     const handleSelectTheme = (index: number) => {
         setSelectedIndex(index);
         selectTheme(themes[index]);
 
     }
-    const handleKeyPress = (event, index) => {
+    const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
         if (event.key === "Enter") {
             downloaded[index] = 1;
             handleSelectTheme(-1);
