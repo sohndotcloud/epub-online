@@ -22,6 +22,11 @@ const Market = ({selectTheme}: MarketProps) => {
         }
     }
 
+    const handleDoublePress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
+        downloaded[index] = 1;
+        handleSelectTheme(-1);
+    }
+
   return (
     <div>
          {themes.map((item, index) => (
@@ -31,6 +36,7 @@ const Market = ({selectTheme}: MarketProps) => {
                 className={`${selectedIndex === index 
                     ? 'selected bg-amber-50 text-amber-950' : ''}`}
                      onKeyDown={(event) => handleKeyPress(event, index)}
+                     onDoubleClick={(event) => handleDoublePress(event, index)}
                  onClick={() => handleSelectTheme(index)}>
                     {item} 
                     { downloaded[index] == 0 && " [Install]" } 
