@@ -4,10 +4,11 @@ const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
 const downloaded = [0, 0, 0]
 
 interface MarketProps {
-  selectTheme: (theme: string) => void; // or whatever type it should be
+  selectTheme: (theme: string) => void;
+  exitMarket: () => void; // or whatever type it should be
 }
 
-const Market = ({selectTheme}: MarketProps) => {
+const Market = ({selectTheme, exitMarket}: MarketProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     
     const handleSelectTheme = (index: number) => {
@@ -43,6 +44,12 @@ const Market = ({selectTheme}: MarketProps) => {
                     { downloaded[index] != 0 && " [Downloaded]" } 
                     </div>
         ))}
+        <div key={themes.length} className={`${selectedIndex === themes.length 
+                    ? 'selected bg-amber-50 text-amber-950' : ''}`}
+                    onClick={() => handleSelectTheme(themes.length)} 
+                    onDoubleClick={exitMarket}>
+            ..
+        </div>
     </div>
   )
 }

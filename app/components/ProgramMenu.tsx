@@ -16,6 +16,10 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
         selectTheme(menuItems[index]);
     }
 
+    const exitMarket = () => {
+        setMarketOpen(false);
+    }
+
     return (
     <div id="menu" className="pl-5">
         {!marketOpen &&
@@ -32,7 +36,7 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
             (<div>
             <button onClick={() => setMarketOpen(true)}>{"Add Themes +"}</button>
             </div>)}
-            { marketOpen && <Market selectTheme={selectTheme} />}
+            { marketOpen && <Market exitMarket={exitMarket} selectTheme={selectTheme} />}
     </div>
     )
 }
