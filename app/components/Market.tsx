@@ -1,4 +1,5 @@
 import React, {useState, KeyboardEvent, MouseEvent} from 'react'
+import { isNull } from 'util';
 
 const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
 const downloaded = [0, 0, 0]
@@ -23,6 +24,12 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
         }
     }
 
+    const handleKeyPressBack = (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === "Enter") {
+            exitMarket();
+        }
+    }
+
     const handleDoublePress = (event: KeyboardEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>, index: number) => {
         downloaded[index] = 1;
         handleSelectTheme(-1);
@@ -44,9 +51,10 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
                     { downloaded[index] != 0 && " [Downloaded]" } 
                     </div>
         ))}
-        <div key={themes.length} className={`${selectedIndex === themes.length 
+        <div tabIndex={0} key={themes.length} className={`${selectedIndex === themes.length 
                     ? 'selected bg-amber-50 text-amber-950' : ''}`}
                     onClick={() => handleSelectTheme(themes.length)} 
+                    onKeyDown={(event) => handleKeyPressBack(event)}
                     onDoubleClick={exitMarket}>
             ..
         </div>
