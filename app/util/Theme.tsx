@@ -21,7 +21,7 @@ export const bubbleTheme: ThemePack = {
 export const goldTheme: ThemePack = {
     name: "Gold Theme",
     background: "bg-neutral-900",
-    background2: "bg-neutral-950",
+    background2: "bg-amber-50",
     font: "text-amber-50",
     font2: "text-amber-300",
     font3: "text-amber-700",
