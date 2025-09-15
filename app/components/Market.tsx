@@ -1,15 +1,17 @@
 import React, {useState, KeyboardEvent, MouseEvent} from 'react'
 import { isNull } from 'util';
+import { ThemePack } from '../util/Theme';
 
 const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
 const downloaded = [0, 0, 0]
 
 interface MarketProps {
+    themePack: ThemePack;
   selectTheme: (theme: string) => void;
   exitMarket: () => void; // or whatever type it should be
 }
 
-const Market = ({selectTheme, exitMarket}: MarketProps) => {
+const Market = ({selectTheme, exitMarket, themePack}: MarketProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     
     const handleSelectTheme = (index: number) => {
@@ -42,7 +44,7 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
                     tabIndex={0}
                     key={index}
                     className={`${selectedIndex === index 
-                        ? 'selected bg-amber-50 text-amber-950' : ''}`}
+                        ? 'selected ' +  themePack.background2 + ' ' + themePack.font3 : ''}`}
                         onKeyDown={(event) => handleKeyPress(event, index)}
                         onDoubleClick={(event) => handleDoublePress(event, index)}
                     onClick={() => handleSelectTheme(index)}>
@@ -52,7 +54,7 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
                         </div>
             ))}
             <div tabIndex={0} key={themes.length} className={`${selectedIndex === themes.length 
-                        ? 'selected bg-amber-50 text-amber-950' : ''}`}
+                        ? 'selected ' +  themePack.background2 + ' ' + themePack.font3 : ''}`}
                         onClick={() => handleSelectTheme(themes.length)} 
                         onKeyDown={(event) => handleKeyPressBack(event)}
                         onDoubleClick={exitMarket}>

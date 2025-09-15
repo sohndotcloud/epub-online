@@ -46,7 +46,7 @@ const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
                     onDoubleClick={setMarketOpenTrue}>
             {"Add Themes +"}
             </div>)}
-            { marketOpen && <Market exitMarket={exitMarket} selectTheme={selectTheme} />}
+            { marketOpen && <Market themePack={themePack} exitMarket={exitMarket} selectTheme={selectTheme} />}
     </div>
     )
 }
