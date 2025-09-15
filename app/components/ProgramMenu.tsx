@@ -20,6 +20,10 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
         setMarketOpen(false);
     }
 
+    const setMarketOpenTrue = () => {
+        setMarketOpen(true);
+    }
+
     return (
     <div id="menu" className="pl-5">
         {!marketOpen &&
@@ -37,7 +41,7 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
                 className={`${selectedIndex === menuItems.length 
                         ? 'selected bg-amber-50 text-amber-950' : ''}`} 
                     onClick={() => handleSelectTheme(menuItems.length)}
-                    onDoubleClick={() => setMarketOpen(true)}>
+                    onDoubleClick={setMarketOpenTrue}>
             {"Add Themes +"}
             </div>)}
             { marketOpen && <Market exitMarket={exitMarket} selectTheme={selectTheme} />}
