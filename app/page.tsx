@@ -11,13 +11,13 @@ export default function Home() {
   const map = new Map();
   map.set(bubbleTheme.name, bubbleTheme);
   map.set(goldTheme.name, goldTheme);
-  
+  let prevTheme: ThemePack;
   const handleSelectTheme = (data: string) => {
-    console.log(data)
     selectTheme(theme);
     const tp = map.get(data);
+    prevTheme = tp;
     if (tp === undefined) {
-      setThemePack(goldTheme);
+        setThemePack(goldTheme);
     } else {
       setThemePack(tp);      
     }
