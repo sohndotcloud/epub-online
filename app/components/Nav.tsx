@@ -57,7 +57,7 @@ export default function Nav({wave, themePack}: NavProps) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="/">Contact</Link></motion.li>
       </ul>
-      <MenuButton />
+      <MenuButton themePack={themePack} />
     </div>
 
     // </div> 
