@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
 import Market from './Market';
+import { ThemePack } from '../util/Theme';
 
 interface ProgramMenuProps {
+    themePack: ThemePack;
     selectTheme: (data: string) => void;
 }
 
-const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
+const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
 
-    const menuItems = ["Bubble Theme", "Secondary Theme"];
+    const menuItems = ["Bubble Theme", "Gold Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [marketOpen, setMarketOpen] = useState(false);
 
@@ -31,7 +33,7 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
             <div
                 key={index}
                 className={`${selectedIndex === index 
-                    ? 'selected bg-amber-50 text-amber-950' : ''}`} 
+                    ? 'selected ' +  themePack.background2 + ' ' + themePack.font4 : ''}`} 
                 onClick={() => handleSelectTheme(index)} >
                     {item}
                     </div>
@@ -39,7 +41,7 @@ const ProgramMenu = ({ selectTheme }: ProgramMenuProps) => {
         { !marketOpen &&
             (<div key={menuItems.length}
                 className={`${selectedIndex === menuItems.length 
-                        ? 'selected bg-amber-50 text-amber-950' : ''}`} 
+                        ? 'selected ' + themePack.background2 + ' ' + themePack.font4 : ''}`} 
                     onClick={() => handleSelectTheme(menuItems.length)}
                     onDoubleClick={setMarketOpenTrue}>
             {"Add Themes +"}

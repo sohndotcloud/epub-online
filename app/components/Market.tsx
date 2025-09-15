@@ -15,8 +15,8 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
     const handleSelectTheme = (index: number) => {
         setSelectedIndex(index);
         selectTheme(themes[index]);
-
     }
+
     const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
         if (event.key === "Enter") {
             downloaded[index] = 1;
@@ -35,31 +35,31 @@ const Market = ({selectTheme, exitMarket}: MarketProps) => {
         handleSelectTheme(-1);
     }
 
-  return (
-    <div>
-         {themes.map((item, index) => (
-            <div
-                tabIndex={0}
-                key={index}
-                className={`${selectedIndex === index 
-                    ? 'selected bg-amber-50 text-amber-950' : ''}`}
-                     onKeyDown={(event) => handleKeyPress(event, index)}
-                     onDoubleClick={(event) => handleDoublePress(event, index)}
-                 onClick={() => handleSelectTheme(index)}>
-                    {item} 
-                    { downloaded[index] == 0 && " [Install]" } 
-                    { downloaded[index] != 0 && " [Downloaded]" } 
-                    </div>
-        ))}
-        <div tabIndex={0} key={themes.length} className={`${selectedIndex === themes.length 
-                    ? 'selected bg-amber-50 text-amber-950' : ''}`}
-                    onClick={() => handleSelectTheme(themes.length)} 
-                    onKeyDown={(event) => handleKeyPressBack(event)}
-                    onDoubleClick={exitMarket}>
-            ..
+    return (
+        <div>
+            {themes.map((item, index) => (
+                <div
+                    tabIndex={0}
+                    key={index}
+                    className={`${selectedIndex === index 
+                        ? 'selected bg-amber-50 text-amber-950' : ''}`}
+                        onKeyDown={(event) => handleKeyPress(event, index)}
+                        onDoubleClick={(event) => handleDoublePress(event, index)}
+                    onClick={() => handleSelectTheme(index)}>
+                        {item} 
+                        { downloaded[index] == 0 && " [Install]" } 
+                        { downloaded[index] != 0 && " [Downloaded]" } 
+                        </div>
+            ))}
+            <div tabIndex={0} key={themes.length} className={`${selectedIndex === themes.length 
+                        ? 'selected bg-amber-50 text-amber-950' : ''}`}
+                        onClick={() => handleSelectTheme(themes.length)} 
+                        onKeyDown={(event) => handleKeyPressBack(event)}
+                        onDoubleClick={exitMarket}>
+                ..
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Market
