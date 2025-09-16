@@ -31,9 +31,11 @@ const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: Program
     }
 
     const downloadTheme = (theme: string) => {
-        menuItemsState.push(theme);
-        setMenuItems(menuItemsState);
-        setSelectedIndex(-1);
+        if(!menuItemsState.includes(theme)) {
+            menuItemsState.push(theme);
+            setMenuItems(menuItemsState);
+            setSelectedIndex(-1);
+        }
     }
 
     return (
