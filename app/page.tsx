@@ -3,7 +3,6 @@ import Nav from './components/Nav'
 import ProgramMenu from './components/ProgramMenu';
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { useWindowSize } from './util/useWindowSize';
 import { ThemePack, bubbleTheme, dopplerTheme, goldTheme, sunsetTheme, magentaTheme } from "./util/Theme";
 
 export default function Home() {
@@ -17,14 +16,6 @@ export default function Home() {
   map.set(sunsetTheme.name, sunsetTheme);
   map.set(dopplerTheme.name, dopplerTheme);
   map.set(magentaTheme.name, magentaTheme);
-
-  const { width, height } = useWindowSize();
-  console.log(width);
-
-  window.addEventListener('resize', () => {
-      const newWidth = window.innerWidth;
-      console.log('New width:', newWidth);
-  });
 
 
   const handleSelectTheme = (data: string) => {
@@ -54,12 +45,12 @@ export default function Home() {
             <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} />
         </motion.div>
      </div>
-     <div className={width < 640 && mobileMenu ? "" : "hidden"}>
+     <div className={mobileMenu ? "" : "hidden"}>
      <nav className={"fixed top-0 left-0 h-screen w-screen " + themePack.background + " " + themePack.font2 }>
       <div className="p-4">
         <div className="flex">
         <h2 className="text-xl font-bold mb-6">Menu</h2>
-        <h2 onClick={() => setMobileMenu(false) } className="text-xl font-bold ml-50">X</h2>
+        <button onClick={() => setMobileMenu(false) } className="text-2xl font-bold ml-50">x</button>
         </div>
         <ul className="space-y-2">
           <li><a href="https://sohn.cloud" className={"block py-2 px-4 rounded hover:" + themePack.background}>Home</a></li>
