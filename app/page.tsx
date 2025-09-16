@@ -47,16 +47,16 @@ export default function Home() {
      </div>
      <div className={mobileMenu ? "" : "hidden"}>
      <nav className={"fixed top-0 left-0 h-screen w-screen " + themePack.background + " " + themePack.font2 }>
-      <div className="p-4">
+      <div className="pl-18 pt-18">
         <div className="flex">
         <h2 className="text-xl font-bold mb-6">Menu</h2>
-        <button onClick={() => setMobileMenu(false) } className="text-2xl font-bold ml-50">x</button>
+        <button onClick={() => setMobileMenu(false) } className="text-3xl font-bold ml-70">x</button>
         </div>
         <ul className="space-y-2">
-          <li><a href="https://sohn.cloud" className={"block py-2 px-4 rounded hover:" + themePack.background}>Home</a></li>
-          <li><a href="https://github.com/sohndotcloud/sohn.cloud" className={"block py-2 px-4 rounded hover:" + themePack.background}>About</a></li>
-          <li><a href="https://github.com/sohndotcloud" className={"block py-2 px-4 rounded hover:" + themePack.background}>Portfolio</a></li>
-          <li><a href="https://linkedin.com/in/nils-sohn" className={"block py-2 px-4 rounded hover:" + themePack.background}>Contact</a></li>
+          <li><a href="https://sohn.cloud" className={"block py-2 px-4 font-bold rounded hover:" + themePack.background}>Home</a></li>
+          <li><a href="https://github.com/sohndotcloud/sohn.cloud" className={"block py-2 px-4 font-bold rounded hover:" + themePack.background}>About</a></li>
+          <li><a href="https://github.com/sohndotcloud" className={"block py-2 px-4 font-bold rounded hover:" + themePack.background}>Portfolio</a></li>
+          <li><a href="https://linkedin.com/in/nils-sohn" className={"block py-2 px-4 font-bold rounded hover:" + themePack.background}>Contact</a></li>
         </ul>
       </div>
     </nav>
