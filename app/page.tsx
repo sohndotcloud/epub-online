@@ -50,7 +50,7 @@ export default function Home() {
       <div className="pl-18 pt-18">
         <div className="flex">
         <h2 className="text-xl font-bold mb-6">Menu</h2>
-        <button onClick={() => setMobileMenu(false) } className="text-3xl font-bold ml-70">x</button>
+        <button onClick={() => setMobileMenu(false) } className="text-3xl font-bold ml-40">x</button>
         </div>
         <ul className="space-y-2">
           <li><a href="https://sohn.cloud" className={"block py-2 px-4 font-bold rounded hover:" + themePack.background}>Home</a></li>
