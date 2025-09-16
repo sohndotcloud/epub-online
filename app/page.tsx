@@ -7,8 +7,8 @@ import { ThemePack, bubbleTheme, dopplerTheme, goldTheme, sunsetTheme, magentaTh
 
 export default function Home() {
   const [ theme, selectTheme ] = useState("");
-  const [ themePack, setThemePack ] = useState<ThemePack>(bubbleTheme);
-  const [ prevTheme, setPrevTheme ] = useState<ThemePack>(bubbleTheme);
+  const [ themePack, setThemePack ] = useState<ThemePack>(sunsetTheme);
+  const [ prevTheme, setPrevTheme ] = useState<ThemePack>(sunsetTheme);
   const [ mobileMenu, setMobileMenu ] = useState(false);
   const map = new Map();
   map.set(bubbleTheme.name, bubbleTheme);

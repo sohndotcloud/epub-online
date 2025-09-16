@@ -12,7 +12,7 @@ interface ProgramMenuProps {
 
 const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: ProgramMenuProps) => {
 
-    const menuItems = ["Bubble Theme", "Sunset Theme", "Doppler Theme"];
+    const menuItems = ["Sunset Theme", "Doppler Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [marketOpen, setMarketOpen] = useState(false);
     const [menuItemsState, setMenuItems] = useState(menuItems);
