@@ -27,3 +27,33 @@ export const goldTheme: ThemePack = {
     font3: "text-amber-700",
     font4: "text-amber-900"
 }
+
+export const sunsetTheme: ThemePack = {
+    name: "Sunset Theme",
+    background: "bg-red-200",
+    background2: "bg-yellow-200",
+    font: "text-amber-900",
+    font2: "text-amber-700",
+    font3: "text-amber-900",
+    font4: "text-amber:1000"
+}
+
+export const dopplerTheme: ThemePack = {
+    name: "Doppler Theme",
+    background: "bg-blue-200",
+    background2: "bg-yellow-200",
+    font: "text-blue-900",
+    font2: "text-blue-700",
+    font3: "text-blue-900",
+    font4: "text-blue-1000"
+}
+
+export const magentaTheme: ThemePack = {
+    name: "Magenta Theme",
+    background: "bg-fuschia-200",
+    background2: "bg-pink-200",
+    font: "text-rose-900",
+    font2: "text-rose-700",
+    font3: "text-rose-900",
+    font4: "text-rose-1000"
+}

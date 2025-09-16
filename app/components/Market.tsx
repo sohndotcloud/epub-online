@@ -2,16 +2,17 @@ import React, {useState, KeyboardEvent, MouseEvent} from 'react'
 import { isNull } from 'util';
 import { ThemePack } from '../util/Theme';
 
-const themes = ["Gold Theme", "Bubble Theme", "Third Theme"];
+const themes = ["Sunset Theme", "Doppler Theme", "Magenta Theme"];
 const downloaded = [0, 0, 0]
 
 interface MarketProps {
     themePack: ThemePack;
   selectTheme: (theme: string) => void;
-  exitMarket: () => void; // or whatever type it should be
+  exitMarket: () => void;
+  downloadTheme: (theme: string) => void;
 }
 
-const Market = ({selectTheme, exitMarket, themePack}: MarketProps) => {
+const Market = ({selectTheme, exitMarket, themePack, downloadTheme}: MarketProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     
     const handleSelectTheme = (index: number) => {
@@ -23,6 +24,7 @@ const Market = ({selectTheme, exitMarket, themePack}: MarketProps) => {
         if (event.key === "Enter") {
             downloaded[index] = 1;
             handleSelectTheme(-1);
+            downloadTheme(themes[index]);
         }
     }
 
@@ -35,6 +37,7 @@ const Market = ({selectTheme, exitMarket, themePack}: MarketProps) => {
     const handleDoublePress = (event: KeyboardEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>, index: number) => {
         downloaded[index] = 1;
         handleSelectTheme(-1);
+        downloadTheme(themes[index]);
     }
 
     return (

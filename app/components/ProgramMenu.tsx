@@ -1,21 +1,25 @@
+'use client'
 import React, {useState} from 'react'
 import Market from './Market';
 import { ThemePack } from '../util/Theme';
+import { menuitem } from 'framer-motion/client';
 
 interface ProgramMenuProps {
     themePack: ThemePack;
     selectTheme: (data: string) => void;
+    handleSelectThemeSuper: (data: string) => void;
 }
 
-const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
+const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: ProgramMenuProps) => {
 
     const menuItems = ["Bubble Theme", "Gold Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [marketOpen, setMarketOpen] = useState(false);
+    const [menuItemsState, setMenuItems] = useState(menuItems);
 
     const handleSelectTheme = (index: number) => {
         setSelectedIndex(index);
-        selectTheme(menuItems[index]);
+        selectTheme(menuItemsState[index]);
     }
 
     const exitMarket = () => {
@@ -26,10 +30,16 @@ const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
         setMarketOpen(true);
     }
 
+    const downloadTheme = (theme: string) => {
+        menuItemsState.push(theme);
+        setMenuItems(menuItemsState);
+        setSelectedIndex(-1);
+    }
+
     return (
     <div id="menu" className="pl-5">
         {!marketOpen &&
-        menuItems.map((item, index) => (
+        menuItemsState.map((item, index) => (
             <div
                 key={index}
                 className={`${selectedIndex === index 
@@ -39,14 +49,14 @@ const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
                     </div>
         ))}
         { !marketOpen &&
-            (<div key={menuItems.length}
-                className={`${selectedIndex === menuItems.length 
+            (<div key={menuItemsState.length}
+                className={`${selectedIndex === menuItemsState.length 
                         ? 'selected ' + themePack.background2 + ' ' + themePack.font3 : ''}`} 
-                    onClick={() => handleSelectTheme(menuItems.length)}
+                    onClick={() => handleSelectTheme(menuItemsState.length)}
                     onDoubleClick={setMarketOpenTrue}>
             {"Add Themes +"}
             </div>)}
-            { marketOpen && <Market themePack={themePack} exitMarket={exitMarket} selectTheme={selectTheme} />}
+            { marketOpen && <Market downloadTheme={downloadTheme} themePack={themePack} exitMarket={exitMarket} selectTheme={selectTheme} />}
     </div>
     )
 }
