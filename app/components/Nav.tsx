@@ -8,9 +8,10 @@ import { ThemePack } from "../util/Theme";
 interface NavProps {
   wave: string;
   themePack: ThemePack;
+  openToggleMenu: (status: boolean) => void;
 }
 
-export default function Nav({wave, themePack}: NavProps) {
+export default function Nav({wave, themePack, openToggleMenu}: NavProps) {
     const [header,setHeader] = useState(false);
 
     const scrollHeader = () => {
@@ -57,7 +58,7 @@ export default function Nav({wave, themePack}: NavProps) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="https://linkedin.com/in/nils-sohn">Contact</Link></motion.li>
       </ul>
-      <MenuButton themePack={themePack} />
+      <MenuButton openToggleMenu={openToggleMenu} themePack={themePack} />
     </div>
 
     // </div> 
