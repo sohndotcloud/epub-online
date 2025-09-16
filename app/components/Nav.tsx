@@ -52,10 +52,10 @@ export default function Nav({wave, themePack}: NavProps) {
           transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="https://github.com/sohndotcloud/sohn.cloud">About</Link></motion.li>
           <motion.li initial={{ opacity: 0, x: +25}}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="/">Portfolio</Link></motion.li>
+          transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="https://github.com/sohndotcloud">Portfolio</Link></motion.li>
           <motion.li initial={{ opacity: 0, x: +25}}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="/">Contact</Link></motion.li>
+          transition={{ duration: 1 }}><Link className={"hover:" + themePack.font3} href="https://linkedin.com/in/nils-sohn">Contact</Link></motion.li>
       </ul>
       <MenuButton themePack={themePack} />
     </div>
