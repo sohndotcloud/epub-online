@@ -1,6 +1,7 @@
 'use client'
 import Nav from './components/Nav'
 import ProgramMenu from './components/ProgramMenu';
+import Reader from './components/Reader'
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { ThemePack, bubbleTheme, dopplerTheme, goldTheme, sunsetTheme, magentaTheme } from "./util/Theme";
@@ -35,13 +36,13 @@ export default function Home() {
   };
 
   return (
-     <div>
+     <div className={"min-h-screen " + themePack.background }>
      <Nav openToggleMenu={openToggleMenu} wave={"yes"} themePack={themePack}/>
      <div className={themePack ? "body " + themePack.background : "body mt-4"}>
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1.5 }}
-          className={themePack ? "border mx-10 h-220 border-t-4 " + themePack.font2 : "border mx-10 h-200 mb-10 border-t-4"}>
+          className={themePack ? "border mx-10 mb-10 h-[85vh] " + themePack.font2 : "border mx-10 mb-10 h-[85vh]"}>
             <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} />
         </motion.div>
      </div>
