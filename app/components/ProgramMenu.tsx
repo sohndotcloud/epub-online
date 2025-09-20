@@ -45,7 +45,7 @@ const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: Program
             <div
                 key={index}
                 className={`${selectedIndex === index 
-                    ? 'selected ' +  themePack.background2 + ' ' + themePack.font3 : ''}`} 
+                    ? 'selected z-10 ' +  themePack.background2 + ' ' + themePack.font3 : ''}`} 
                 onClick={() => handleSelectTheme(index)} >
                     {item}
                     </div>
@@ -53,7 +53,7 @@ const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: Program
         { !marketOpen &&
             (<div key={menuItemsState.length}
                 className={`${selectedIndex === menuItemsState.length 
-                        ? 'selected ' + themePack.background2 + ' ' + themePack.font3 : ''}`} 
+                        ? 'selected z-10 ' + themePack.background2 + ' ' + themePack.font3 : ''}`} 
                     onClick={() => handleSelectTheme(menuItemsState.length)}
                     onDoubleClick={setMarketOpenTrue}>
             {"Add Themes +"}

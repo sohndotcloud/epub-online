@@ -41,7 +41,7 @@ export default function Home() {
      <div className={themePack ? "body " + themePack.background : "body mt-4"}>
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1.5 }}
+          transition={{ delay: 2, duration: 1.5 }}
           className={themePack ? "border mx-10 mb-10 h-[85vh] " + themePack.font2 : "border mx-10 mb-10 h-[85vh]"}>
             <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} />
         </motion.div>
