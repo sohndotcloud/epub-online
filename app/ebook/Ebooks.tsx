@@ -63,10 +63,29 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
         }
       }
     };
+
     
+    const handleClick = (event: MouseEvent) => {
+        if (pages.length > page) {
+          setPage(page + 1)
+          setContent(pages[page])
+        }
+      };
+
+      const handleDoubleClick = (event: MouseEvent) => {
+        if (page > 0) {
+          setPage(page - 1)
+          setContent(pages[page])
+        }
+      };
+    
+    window.addEventListener('dblclick', handleDoubleClick);
+    window.addEventListener('click', handleClick);
     window.addEventListener('keydown', handleKeyDown);
         return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('dblclick', handleDoubleClick);
     };
   }, [pages, page, setPage, setContent]);
 
