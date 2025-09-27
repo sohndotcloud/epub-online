@@ -35,11 +35,11 @@ export default function Nav({wave, themePack, openToggleMenu}: NavProps) {
       <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: -25}}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0, transitionEnd: { display: 'none'} }}
           transition={{ duration: 1 }}
           className={themePack && "mt-2 text-center md:pl-0 font-mono font-extrabold pt-5 text-l text-[20px] lg:text-[24px] " + themePack.font2}><Link href="/">Nils Sohn <motion.div animate={{ rotate: -15 }}
             transition={{ duration: .5 }}>
-          <motion.div className="" animate={{ rotate: 30 }}
+          <motion.div className="" animate={{ rotate: 30, transitionEnd: { display: 'none'}  }}
             transition={{ delay: .5, duration: .5 }}>
               <motion.div animate={{ opacity: 0, transitionEnd: { display: 'none'} }}
             transition={{ delay: 1, duration: .6 }}>

@@ -2,7 +2,6 @@
 import React, {useState} from 'react'
 import Market from './Market';
 import { ThemePack } from '../util/Theme';
-import { menuitem } from 'framer-motion/client';
 
 interface ProgramMenuProps {
     themePack: ThemePack;
@@ -10,7 +9,7 @@ interface ProgramMenuProps {
     handleSelectThemeSuper: (data: string) => void;
 }
 
-const ProgramMenu = ({ themePack, selectTheme, handleSelectThemeSuper }: ProgramMenuProps) => {
+const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
 
     const menuItems = ["Sunset Theme", "Doppler Theme"];
     const [selectedIndex, setSelectedIndex] = useState(0);

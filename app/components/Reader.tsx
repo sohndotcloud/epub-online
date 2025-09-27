@@ -1,24 +1,19 @@
 import React, {ChangeEvent, useState} from 'react'
-import JSZip from 'jszip'
+import Ebooks from '../ebook/Ebooks';
 
 const Reader = () => {
-    const [ file, setFile ] = useState<File | null>(null);
-    const zip = new JSZip();
+    const [ file, setFile ] = useState<File>();
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
-            setFile
-            zip.loadAsync(e.target.files[0]).then(function (zip) {
-            return zip.file("Hello.txt")?.async("string");
-            }).then(function (text) {
-            console.log(text);
-            });
+          setFile(e.target.files[0]);
         }
     }
 
   return (
-    <div>
+    <div className="">
       <input type="file" onChange={handleChange} />
+      <Ebooks file={file} />
     </div>
   )
 }

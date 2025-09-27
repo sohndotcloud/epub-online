@@ -42,8 +42,9 @@ export default function Home() {
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1.5 }}
-          className={themePack ? "border mx-10 mb-10 h-[85vh] " + themePack.font2 : "border mx-10 mb-10 h-[85vh]"}>
-            <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} />
+          className={themePack ? " mx-10 mb-10 h-[85vh] " + themePack.font2 : "border mx-10 mb-10 h-[85vh]"}>
+            {/* <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} /> */}
+            <Reader />
         </motion.div>
      </div>
      <div className={mobileMenu ? "" : "hidden"}>

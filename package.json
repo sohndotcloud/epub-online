@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.7",
+    "@types/xml-parser": "^1.2.33",
+    "dompurify": "^3.2.7",
     "framer-motion": "^12.23.12",
     "jszip": "^3.10.1",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "typewriter-effect": "^2.22.0"
+    "typewriter-effect": "^2.22.0",
+    "xml-parser": "^1.2.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
