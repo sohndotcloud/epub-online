@@ -11,6 +11,7 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
   const [content, setContent] = useState<string>("");
   const [page, setPage] = useState<number>(0);
   const [pages, setPages] = useState<string[]>([]);
+  const [scroll, setScroll] = useState(0);
     useEffect(() => {
     async function getContainerFile() {
       const zip = new JSZip();
@@ -30,7 +31,6 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
         const currentFile = manifestXml["root"]["children"][1]["children"][i]["attributes"]["href"];
         if (currentFile.endsWith(".xhtml")) {
           let fileContent = "";
-          console.log(currentFile);
           if (loadedZip.files[currentFile]) {
             fileContent = await loadedZip.files[currentFile].async('string');
           } else {
@@ -54,48 +54,23 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       if (event.key === 'ArrowLeft') {
         if (pages.length > 0) {
           setPage(page - 1)
-          setContent(pages[page])
+          setContent(pages[page - 1])
         }
       } else if (event.key === 'ArrowRight') {
         if (pages.length > page) {
           setPage(page + 1);
-          setContent(pages[page]);
+          setContent(pages[page + 1]);
         }
       }
     };
 
     
-    const handleClick = (event: MouseEvent) => {
-        if (pages.length > page) {
-          setPage(page + 1)
-          setContent(pages[page])
-        }
-      };
-
-      const handleDoubleClick = (event: MouseEvent) => {
-        if (page > 0) {
-          setPage(page - 1)
-          setContent(pages[page])
-        }
-      };
-    
-    window.addEventListener('dblclick', handleDoubleClick);
-    window.addEventListener('click', handleClick);
     window.addEventListener('keydown', handleKeyDown);
         return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('click', handleClick);
-      window.removeEventListener('dblclick', handleDoubleClick);
     };
   }, [pages, page, setPage, setContent]);
 
-  useEffect(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth"
-        });
-      }, [content]);
   
   return (
     <div className="h-[85vh] overflow-y-auto p-4 border touch-auto">

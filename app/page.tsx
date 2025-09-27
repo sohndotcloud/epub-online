@@ -11,6 +11,7 @@ export default function Home() {
   const [ themePack, setThemePack ] = useState<ThemePack>(sunsetTheme);
   const [ prevTheme, setPrevTheme ] = useState<ThemePack>(sunsetTheme);
   const [ mobileMenu, setMobileMenu ] = useState(false);
+  const [ readerPicked, setReaderPicked ] = useState(false);
   const map = new Map();
   map.set(bubbleTheme.name, bubbleTheme);
   map.set(goldTheme.name, goldTheme);
@@ -43,8 +44,8 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1.5 }}
           className={themePack ? " mx-10 mb-10 h-[85vh] " + themePack.font2 : "border mx-10 mb-10 h-[85vh]"}>
-            <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} />
-            <Reader />
+            { !readerPicked ? <ProgramMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} /> : ""}
+            <Reader setReaderPicked={setReaderPicked} />
         </motion.div>
      </div>
      <div className={mobileMenu ? "" : "hidden"}>
