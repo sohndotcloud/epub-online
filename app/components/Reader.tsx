@@ -2,7 +2,7 @@ import React, {ChangeEvent, useState} from 'react'
 import Ebooks from '../ebook/Ebooks';
 
 const Reader = () => {
-    const [ file, setFile ] = useState<File>();
+    const [ file, setFile ] = useState<File | null>(null);
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
@@ -13,7 +13,7 @@ const Reader = () => {
   return (
     <div className="">
       <input type="file" onChange={handleChange} />
-      <Ebooks file={file} />
+      {file && <Ebooks file={file} />}
     </div>
   )
 }

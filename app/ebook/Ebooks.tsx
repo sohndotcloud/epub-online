@@ -4,32 +4,33 @@ import parse from 'xml-parser'
 import DOMPurify from 'dompurify'
 
 interface EbooksProps {
-    file: string;
+    file?: File;
 }
 
 const Ebooks: React.FC<EbooksProps> = ({ file }) => {
-  const [xml, setXml ] = useState<string>();
   const [content, setContent] = useState<string>("");
   const [page, setPage] = useState<number>(0);
   const [pages, setPages] = useState<string[]>([]);
     useEffect(() => {
     async function getContainerFile() {
       const zip = new JSZip();
-      const loadedZip = await zip.loadAsync(file);
+      if (!file) return;
+      const arrayBuffer = await file.arrayBuffer();
+      const loadedZip = await zip.loadAsync(arrayBuffer);
       const xmlString = await loadedZip.files["META-INF/container.xml"].async("string");
-      setXml(xmlString);
       const xmlObj = parse(xmlString);
       const manifestFile = xmlObj["root"]["children"][0]["children"][0]["attributes"]["full-path"];
       const manifestString = await loadedZip.files[manifestFile].async('string');
       const manifestXml = parse(manifestString);
       const size = manifestXml["root"]["children"][1]["children"].length;
-      let i = 4;
-      let pages = [];
-      
+      let i = 0;
+      const pages = [];
+
       while (i < size) {
-        let currentFile = manifestXml["root"]["children"][1]["children"][i]["attributes"]["href"];
+        const currentFile = manifestXml["root"]["children"][1]["children"][i]["attributes"]["href"];
         if (currentFile.endsWith(".xhtml")) {
           let fileContent = "";
+          console.log(currentFile);
           if (loadedZip.files[currentFile]) {
             fileContent = await loadedZip.files[currentFile].async('string');
           } else {
