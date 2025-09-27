@@ -70,6 +70,14 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
     };
   }, [pages, page, setPage, setContent]);
 
+  useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }, [content]);
+  
   return (
     <div className="h-[85vh] overflow-y-auto p-4 border touch-auto">
       <div dangerouslySetInnerHTML={{ __html: content ? content : ''}}></div>

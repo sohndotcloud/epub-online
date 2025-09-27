@@ -38,7 +38,7 @@ const ProgramMenu = ({ themePack, selectTheme }: ProgramMenuProps) => {
     }
 
     return (
-    <div id="menu" className="pl-5">
+    <div id="menu" className="border pb-5">
         {!marketOpen &&
         menuItemsState.map((item, index) => (
             <div
