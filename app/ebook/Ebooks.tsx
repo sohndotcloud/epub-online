@@ -37,7 +37,7 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
             fileContent = await loadedZip.files["OEBPS/" + currentFile].async('string');
           }
           pages.push(fileContent);
-          let content = DOMPurify.sanitize(pages[page]);
+          const content = DOMPurify.sanitize(pages[page]);
           setContent(content)
         }
         i++;
