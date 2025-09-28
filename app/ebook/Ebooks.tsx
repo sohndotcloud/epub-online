@@ -64,10 +64,19 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       }
     };
 
+
+    const handleClick = (event: MouseEvent) => {
+        if (pages.length > page) {
+          setPage(page + 1)
+          setContent(pages[page])
+        }
+      };
     
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('click', handleClick);
         return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('click', handleClick);
     };
   }, [pages, page, setPage, setContent]);
 
