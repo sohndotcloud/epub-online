@@ -1,5 +1,4 @@
 import React, {useState, KeyboardEvent, MouseEvent} from 'react'
-import { isNull } from 'util';
 import { ThemePack } from '../util/Theme';
 
 const themes = ["Bubble Theme", "Gold Theme"];

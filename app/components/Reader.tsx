@@ -1,11 +1,7 @@
 import React, {ChangeEvent, useState, useEffect} from 'react'
 import Ebooks from '../ebook/Ebooks';
 
-interface ReaderProps {
-  setReaderPicked: (picked: boolean) => void;
-}
-
-const Reader = ({setReaderPicked}: ReaderProps) => {
+const Reader = () => {
     const [ file, setFile ] = useState<File | null>(null);
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -14,15 +10,9 @@ const Reader = ({setReaderPicked}: ReaderProps) => {
         }
     }
 
-    useEffect(() => {
-      if (file) {
-        setReaderPicked(true);
-      }
-    }, [file]);
-
   return (
     <div className="">
-      { !file ? <input type="file" onChange={handleChange} /> : ""}
+      { !file ? <input type="file" onChange={handleChange} accept=".epub"/> : ""}
       {file && <Ebooks file={file} />}
     </div>
   )

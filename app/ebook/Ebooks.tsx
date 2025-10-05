@@ -1,80 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import JSZip from 'jszip'
-import parse from 'xml-parser'
-import DOMPurify from 'dompurify'
+import React, { useEffect, useRef, useState } from 'react'
+import ePub, { Rendition } from 'epubjs'
 
 interface EbooksProps {
-    file?: File;
+  file?: File;
 }
 
 const Ebooks: React.FC<EbooksProps> = ({ file }) => {
-  const [content, setContent] = useState<string>("");
-  const [page, setPage] = useState<number>(0);
-  const [pages, setPages] = useState<string[]>([]);
-  const [scroll, setScroll] = useState(0);
-    useEffect(() => {
-    async function getContainerFile() {
-      const zip = new JSZip();
-      if (!file) return;
-      const arrayBuffer = await file.arrayBuffer();
-      const loadedZip = await zip.loadAsync(arrayBuffer);
-      const xmlString = await loadedZip.files["META-INF/container.xml"].async("string");
-      const xmlObj = parse(xmlString);
-      const manifestFile = xmlObj["root"]["children"][0]["children"][0]["attributes"]["full-path"];
-      const manifestString = await loadedZip.files[manifestFile].async('string');
-      const manifestXml = parse(manifestString);
-      const size = manifestXml["root"]["children"][1]["children"].length;
-      let i = 0;
-      const pages = [];
+  const [ebookFile, setFile] = useState<File | null>(null);
+  const renditionRef = useRef<Rendition | null>(null);
 
-      while (i < size) {
-        const currentFile = manifestXml["root"]["children"][1]["children"][i]["attributes"]["href"];
-        if (currentFile.endsWith(".xhtml")) {
-          let fileContent = "";
-          if (loadedZip.files[currentFile]) {
-            fileContent = await loadedZip.files[currentFile].async('string');
-          } else {
-            fileContent = await loadedZip.files["OEBPS/" + currentFile].async('string');
-          }
-          pages.push(fileContent);
-          setContent(pages[page])
-        }
-        i++;
-      }
-      setPages(pages);
-    }
-
+  useEffect(() => {
     if (file) {
-      getContainerFile();
+      setFile(file);
     }
   }, [file]);
 
   useEffect(() => {
-    const handleKeyDown = (event: { key: string; }) => {
-      if (event.key === 'ArrowLeft') {
-        if (pages.length > 0) {
-          setPage(page - 1)
-          setContent(pages[page - 1])
-        }
-      } else if (event.key === 'ArrowRight') {
-        if (pages.length > page) {
-          setPage(page + 1);
-          setContent(pages[page + 1]);
-        }
+    if (!file) return;
+
+    const setupBook = async () => {
+      const arrayBuffer = await file.arrayBuffer();
+      const book = ePub(arrayBuffer);
+      const rendition = book.renderTo("viewer", {
+        height: 800,
+        spread: "auto"
+      });
+
+      renditionRef.current = rendition;
+      rendition.display();
+    };
+
+    setupBook();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key == 'ArrowLeft') {
+        renditionRef.current?.prev();
+      } else if (event.key == 'ArrowRight') {
+        renditionRef.current?.next();
       }
     };
 
-    
     window.addEventListener('keydown', handleKeyDown);
-        return () => {
+
+    return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [pages, page, setPage, setContent]);
+  }, [file]);
 
-  
   return (
-    <div className="h-[85vh] overflow-y-auto p-4 border touch-auto">
-      <div dangerouslySetInnerHTML={{ __html: content ? content : ''}}></div>
+    <div className="text-left text-2xl w-full h-[85vh] overflow-y-auto border touch-auto">
+      <div id="viewer" className="scrolled"></div>
+      <button onClick={() => renditionRef.current?.prev()}>Previous</button>
+      <button onClick={() => renditionRef.current?.next()}>Next</button>
     </div>
   )
 }
