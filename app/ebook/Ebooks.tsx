@@ -22,7 +22,7 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       const arrayBuffer = await file.arrayBuffer();
       const book = ePub(arrayBuffer);
       const rendition = book.renderTo("viewer", {
-        height: 480,
+        height: 800,
         spread: "auto"
       });
 
