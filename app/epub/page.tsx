@@ -56,7 +56,7 @@ export default function Home() {
         <button onClick={() => setMobileMenu(false) } className="text-3xl font-bold ml-20">x</button>
         </div>
         <ul className="space-y-2">
-          <li><a href="https://sohn.cloud" className={"block py-2 font-bold rounded hover:" + themePack.background}>Home</a></li>
+          <li><a href="https://sohn.cloud/epub" className={"block py-2 font-bold rounded hover:" + themePack.background}>Home</a></li>
           <li><a href="https://github.com/sohndotcloud/sohn.cloud" className={"block py-2 font-bold rounded hover:" + themePack.background}>About</a></li>
           <li><a href="https://github.com/sohndotcloud" className={"block py-2 font-bold rounded hover:" + themePack.background}>Portfolio</a></li>
           <li><a href="https://linkedin.com/in/nils-sohn" className={"block py-2 font-bold rounded hover:" + themePack.background}>Contact</a></li>
