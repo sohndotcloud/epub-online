@@ -22,7 +22,7 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       const arrayBuffer = await file.arrayBuffer();
       const book = ePub(arrayBuffer);
       const rendition = book.renderTo("viewer", {
-        height: 800,
+        height: 480,
         spread: "auto"
       });
 
@@ -40,22 +40,16 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       }
     };
 
-    const handleClick = (event: MouseEvent) => {
-      renditionRef.current?.next();
-    }
-
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('click', handleClick);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('click', handleClick);
     };
   }, [file]);
 
   return (
-    <div  className="text-left text-2xl w-[100%] h-[100%] overflow-y touch-auto">
-      <div id="viewer" className="scrolled"></div>
+    <div  className="text-left text-2xl w-[100%] h-[100%] overflow-y" onClick={() => renditionRef.current?.next()}>
+      <div id="viewer" className="scrolled"  onClick={() => renditionRef.current?.next()}></div>
       <button onClick={() => renditionRef.current?.prev()}>Previous</button>
       <button onClick={() => renditionRef.current?.next()}>Next</button>
     </div>
