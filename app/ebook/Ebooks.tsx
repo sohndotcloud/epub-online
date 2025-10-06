@@ -44,7 +44,6 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('click', handleClick);
     };
   }, [file]);
 
