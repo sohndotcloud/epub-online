@@ -48,10 +48,10 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
   }, [file]);
 
   return (
-    <div  className="text-left text-2xl w-[100%] h-[100%] overflow-y" onClick={() => renditionRef.current?.next()}>
-      <div id="viewer" className="scrolled"  onClick={() => renditionRef.current?.next()}></div>
-      <button onClick={() => renditionRef.current?.prev()}>Previous</button>
-      <button onClick={() => renditionRef.current?.next()}>Next</button>
+    <div  className="text-left text-l w-[100%] h-[100%] overflow-y">
+      <div id="viewer" className="scrolled"></div>
+      <button onClick={() => renditionRef.current?.prev()}>{ "< Previous" }</button><div className="w-[50vh]"></div>
+      <button onClick={() => renditionRef.current?.next()}>{"Next >"}</button>
     </div>
   )
 }

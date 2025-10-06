@@ -43,7 +43,7 @@ export default function Home() {
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1.5 }}
-          className={themePack ? " mx-5 mb-10 h-[100%] " + themePack.font2 : "border mx-10 mb-10 h-[100%]"}>
+          className={themePack ? " mx-5 mb-10 h-[100vh] " + themePack.font2 : "border mx-10 mb-10 h-[100vh]"}>
             { !themeSelected ? <ThemeMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} confirmTheme={setThemeSelected} /> : ""}
            { themeSelected ? <Reader /> : ""}
         </motion.div>
