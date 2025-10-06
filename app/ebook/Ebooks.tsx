@@ -6,14 +6,7 @@ interface EbooksProps {
 }
 
 const Ebooks: React.FC<EbooksProps> = ({ file }) => {
-  const [ebookFile, setFile] = useState<File | null>(null);
   const renditionRef = useRef<Rendition | null>(null);
-
-  useEffect(() => {
-    if (file) {
-      setFile(file);
-    }
-  }, [file]);
 
   useEffect(() => {
     if (!file) return;
@@ -22,7 +15,7 @@ const Ebooks: React.FC<EbooksProps> = ({ file }) => {
       const arrayBuffer = await file.arrayBuffer();
       const book = ePub(arrayBuffer);
       const rendition = book.renderTo("viewer", {
-        height: 800,
+        height: 720,
         spread: "auto"
       });
 
