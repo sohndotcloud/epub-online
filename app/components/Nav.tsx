@@ -37,7 +37,7 @@ export default function Nav({wave, themePack, openToggleMenu}: NavProps) {
           initial={{ opacity: 0, y: -25}}
           animate={{ opacity: 1, y: 0, transitionEnd: { display: 'grid'} }}
           transition={{ duration: 1 }}
-          className={themePack && "mt-2 text-center md:pl-0 font-extrabold pt-5 text-l text-[20px] lg:text-[24px] " + themePack.font2}><Link href="/">Scrollable<motion.div animate={{ rotate: -15 }}
+          className={themePack && "mt-2 text-center md:pl-0 font-extrabold pt-5 text-l text-[20px] lg:text-[24px] " + themePack.font2}><Link href="/">EPUB Online<motion.div animate={{ rotate: -15 }}
             transition={{ duration: .5 }}>
           <motion.div className="" animate={{ rotate: 30, transitionEnd: { display: 'none'}  }}
             transition={{ delay: .5, duration: .5 }}>

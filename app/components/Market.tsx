@@ -1,7 +1,7 @@
 import React, {useState, KeyboardEvent, MouseEvent} from 'react'
 import { ThemePack } from '../util/Theme';
 
-const themes = ["Bubble Theme", "Gold Theme"];
+const themes = ["Bubble Theme"];
 const downloaded = [0, 0, 0]
 
 interface MarketProps {
