@@ -1,10 +1,10 @@
 'use client'
-import Nav from './components/Nav'
-import ThemeMenu from './components/ThemeMenu';
-import Reader from './components/Reader'
+import Nav from '../components/Nav'
+import ThemeMenu from '../components/ThemeMenu';
+import Reader from '../components/Reader'
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { ThemePack, bubbleTheme, dopplerTheme, goldTheme, sunsetTheme, magentaTheme } from "./util/Theme";
+import { ThemePack, bubbleTheme, dopplerTheme, goldTheme, sunsetTheme, magentaTheme } from "../util/Theme";
 
 export default function Home() {
   const [ theme, selectTheme ] = useState("");
