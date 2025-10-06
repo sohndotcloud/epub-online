@@ -37,13 +37,13 @@ export default function Home() {
   };
 
   return (
-     <div className={"min-h-screen " + themePack.background }>
+     <div className={"pb-10 min-h-screen " + themePack.background }>
      <Nav openToggleMenu={openToggleMenu} wave={"yes"} themePack={themePack}/>
      <div className={themePack ? "body " + themePack.background : "body mt-4"}>
       <motion.div initial={{ opacity: 0}}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1.5 }}
-          className={themePack ? " mx-5 mb-10 h-[75vh] " + themePack.font2 : "border mx-10 mb-10 h-[75vh]"}>
+          className={themePack ? " mx-5 mb-10 h-[100%] " + themePack.font2 : "border mx-10 mb-10 h-[100%]"}>
             { !themeSelected ? <ThemeMenu handleSelectThemeSuper={handleSelectTheme} themePack={themePack} selectTheme={handleSelectTheme} confirmTheme={setThemeSelected} /> : ""}
            { themeSelected ? <Reader /> : ""}
         </motion.div>
