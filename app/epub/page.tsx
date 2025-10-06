@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-     <div className={"pb-10 min-h-screen " + themePack.background }>
+     <div className={"min-h-screen " + themePack.background }>
      <Nav openToggleMenu={openToggleMenu} wave={"yes"} themePack={themePack}/>
      <div className={themePack ? "body " + themePack.background : "body mt-4"}>
       <motion.div initial={{ opacity: 0}}
