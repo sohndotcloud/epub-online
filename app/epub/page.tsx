@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Nav from '../components/Nav'
 import ThemeMenu from '../components/ThemeMenu';
 import Reader from '../components/Reader'
