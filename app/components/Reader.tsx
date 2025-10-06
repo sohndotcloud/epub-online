@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState, useEffect} from 'react'
-import Ebooks from '../ebook/Ebooks';
+import Ebooks from './Ebooks';
 
 const Reader = () => {
     const [ file, setFile ] = useState<File | null>(null);
